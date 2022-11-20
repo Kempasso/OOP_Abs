@@ -1,16 +1,14 @@
-# This is a sample Python script.
+from classes import Request, Store, Shop
+from utils import from_shop_to_store, from_store_to_shop
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+store = Store({"огурец": 1, "помидор": 1, "лук": 1})
+shop = Shop({"огурец": 3, "помидор": 2, "лук": 7})
+while True:
+    user_input: list = input().split(' ')
+    request = Request(user_input)
+    if request.fromm == 'магазин':
+        from_shop_to_store(shop, store, request)
+    else:
+        from_store_to_shop(shop, store, request)
+    print(store.items)
+    print(shop.items)
